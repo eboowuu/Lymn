@@ -1,7 +1,11 @@
-﻿@model IEnumerable<LymcWeb.Models.Boat>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+
+@model IEnumerable<LymcWeb.Models.Boat>
+
 
 @{
-    ViewData["Title"] = "Boats Index";
+    ViewData["Title"] = "Boat Index";
 }
 
 <h2>List of Boats</h2>
@@ -17,25 +21,25 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.BoatName)
+                    @_Localizer["Boat Name"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.BoatPicUrl)
+                    @_Localizer["Image"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LengthInFeet)
+                    @_Localizer["Length (feet)"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Make)
+                    @_Localizer["Make"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Year)
+                    @_Localizer["Made Year"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.RecordCreationDate)
+                    @_Localizer["Added On"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CreatedBy)
+                    @_Localizer["Added By"]
                 </th>
             <th></th>
         </tr>

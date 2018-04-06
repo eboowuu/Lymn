@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using LymcWeb.Data;
 using LymcWeb.Models;
 using LymcWeb.Services;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.Extensions.Options;
 
 namespace LymcWeb
 {
@@ -28,6 +31,8 @@ namespace LymcWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -39,7 +44,25 @@ namespace LymcWeb
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DummyData>();
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix, opts => { opts.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization();
+
+            services.Configure<RequestLocalizationOptions>(opts =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("en-US"),
+                    new CultureInfo("fr"),
+                    new CultureInfo("fr-FR"),
+                };
+
+                opts.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");
+                opts.SupportedCultures = supportedCultures;
+                opts.SupportedUICultures = supportedCultures;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +80,10 @@ namespace LymcWeb
             }
 
             app.UseStaticFiles();
+
+            var options = 
+                app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(options.Value);
 
             app.UseAuthentication();
 

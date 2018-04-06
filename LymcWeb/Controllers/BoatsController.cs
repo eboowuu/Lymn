@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LymcWeb.Data;
 using LymcWeb.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Localization;
 
 namespace LymcWeb.Controllers
 {
@@ -15,11 +16,13 @@ namespace LymcWeb.Controllers
     {
         private readonly ApplicationDbContext _context;
         private UserManager<ApplicationUser> _userManager;
+        private readonly IStringLocalizer<BoatsController> _localizer;
 
-        public BoatsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public BoatsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IStringLocalizer<BoatsController> localizer)
         {
             _context = context;
             _userManager = userManager;
+            _localizer = localizer;
         }
 
         // GET: Boats
