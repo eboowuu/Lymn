@@ -11,9 +11,10 @@ using System;
 namespace LymcWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180402205713_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,7 +104,7 @@ namespace LymcWeb.Data.Migrations
 
                     b.Property<string>("CreatedById");
 
-                    b.Property<float?>("LengthInFeet")
+                    b.Property<float?>("LenghtInFeet")
                         .IsRequired();
 
                     b.Property<string>("Make")
@@ -235,7 +236,7 @@ namespace LymcWeb.Data.Migrations
             modelBuilder.Entity("LymcWeb.Models.Boat", b =>
                 {
                     b.HasOne("LymcWeb.Models.ApplicationUser", "CreatedBy")
-                        .WithMany("Boats")
+                        .WithMany()
                         .HasForeignKey("CreatedById");
                 });
 

@@ -1,0 +1,52 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2>Edit User: @Model.UserName</h2>
+
+<p>
+    @Html.ActionLink("Add Role", "AddRoleToUser", new { Model.Id })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Roles")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var role in Model.RoleNames)
+    {
+        
+        <tr>
+            <td>
+                @role
+            </td>
+
+            <td>
+                @if (@Model.UserName != "a" || @role != "Admin")
+                {
+                    @Html.ActionLink(
+                             linkText: "Delete",
+                             actionName: "DeleteRoleFromUser",
+                             controllerName: "UsersAndRoles",
+                             routeValues: new
+                             {
+                                 uId = Model.Id,
+                                 roleId = role
+                             },
+                             htmlAttributes: null
+                         )}
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "IndexUsers")
+</div>

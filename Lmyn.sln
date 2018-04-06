@@ -5,6 +5,26 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LymcWeb", "LymcWeb\LymcWeb.csproj", "{7E3E758D-260F-45A2-95FD-C5DC4E062ACE}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LymcClient", "LymcClient\", "{FD0954AE-625E-46A5-9CFF-7F2055D88FC9}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49981"
+		Debug.AspNetCompiler.PhysicalPath = "LymcClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49981\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49981"
+		Release.AspNetCompiler.PhysicalPath = "LymcClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49981\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49981"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +35,10 @@ Global
 		{7E3E758D-260F-45A2-95FD-C5DC4E062ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E3E758D-260F-45A2-95FD-C5DC4E062ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E3E758D-260F-45A2-95FD-C5DC4E062ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0954AE-625E-46A5-9CFF-7F2055D88FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0954AE-625E-46A5-9CFF-7F2055D88FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0954AE-625E-46A5-9CFF-7F2055D88FC9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0954AE-625E-46A5-9CFF-7F2055D88FC9}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

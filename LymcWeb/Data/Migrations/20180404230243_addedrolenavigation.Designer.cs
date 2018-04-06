@@ -11,9 +11,10 @@ using System;
 namespace LymcWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180404230243_addedrolenavigation")]
+    partial class addedrolenavigation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,7 +236,7 @@ namespace LymcWeb.Data.Migrations
             modelBuilder.Entity("LymcWeb.Models.Boat", b =>
                 {
                     b.HasOne("LymcWeb.Models.ApplicationUser", "CreatedBy")
-                        .WithMany("Boats")
+                        .WithMany()
                         .HasForeignKey("CreatedById");
                 });
 
@@ -271,7 +272,7 @@ namespace LymcWeb.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LymcWeb.Models.ApplicationUser")
-                        .WithMany()
+                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
