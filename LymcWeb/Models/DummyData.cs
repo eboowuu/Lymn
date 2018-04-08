@@ -23,6 +23,7 @@ namespace LymcWeb.Models
 
         public async Task Seed()
         {
+            
             if (!_roleManager.RoleExistsAsync("Admin").Result)
             {
                 await _roleManager.CreateAsync(new IdentityRole("Admin"));

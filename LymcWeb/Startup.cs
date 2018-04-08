@@ -100,7 +100,7 @@ namespace LymcWeb
             });
 
             
-            seeder.Seed().Wait();
+            //seeder.Seed().Wait();
         }
     }
 }
