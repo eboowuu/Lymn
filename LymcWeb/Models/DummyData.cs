@@ -86,6 +86,23 @@ namespace LymcWeb.Models
                 _context.Boats.AddRange(getBoats(_context, _userManager));
             }
             _context.SaveChanges();
+
+
+            if (!_context.Reservations.Any())
+            {
+                var boatToAdd = _context.Boats.FirstOrDefault();
+                _context.Reservations.Add(
+                    new Reservation()
+                    {
+                        UserName = "a",
+                        ReservedBoat = boatToAdd,
+                        StartDate = DateTime.Now,
+                        EndDate = new DateTime(2018, 4, 30)
+                        
+                    });
+                _context.SaveChanges();
+            }
+
         }
         
         public static List<Boat> getBoats(ApplicationDbContext db, UserManager<ApplicationUser> userManager)

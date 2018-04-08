@@ -17,8 +17,7 @@ namespace LymcWeb.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011");
 
             modelBuilder.Entity("LymcWeb.Models.ApplicationUser", b =>
                 {
@@ -83,8 +82,7 @@ namespace LymcWeb.Data.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -124,6 +122,26 @@ namespace LymcWeb.Data.Migrations
                     b.ToTable("Boats");
                 });
 
+            modelBuilder.Entity("LymcWeb.Models.Reservation", b =>
+                {
+                    b.Property<int>("ReservationId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<int?>("ReservedBoatBoatId");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("ReservationId");
+
+                    b.HasIndex("ReservedBoatBoatId");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -142,8 +160,7 @@ namespace LymcWeb.Data.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -237,6 +254,13 @@ namespace LymcWeb.Data.Migrations
                     b.HasOne("LymcWeb.Models.ApplicationUser", "CreatedBy")
                         .WithMany("Boats")
                         .HasForeignKey("CreatedById");
+                });
+
+            modelBuilder.Entity("LymcWeb.Models.Reservation", b =>
+                {
+                    b.HasOne("LymcWeb.Models.Boat", "ReservedBoat")
+                        .WithMany()
+                        .HasForeignKey("ReservedBoatBoatId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

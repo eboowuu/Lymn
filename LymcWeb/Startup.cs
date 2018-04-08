@@ -34,7 +34,7 @@ namespace LymcWeb
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -48,6 +48,8 @@ namespace LymcWeb
                 .AddViewLocalization(
                     LanguageViewLocationExpanderFormat.Suffix, opts => { opts.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
+
+            services.AddCors();
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {
@@ -86,6 +88,9 @@ namespace LymcWeb
             app.UseRequestLocalization(options.Value);
 
             app.UseAuthentication();
+
+            app.UseCors(builder =>
+              builder.WithOrigins("http://localhost:4200"));
 
             app.UseMvc(routes =>
             {
