@@ -90,7 +90,7 @@ namespace LymcWeb
             app.UseAuthentication();
 
             app.UseCors(builder =>
-              builder.WithOrigins("http://localhost:4200"));
+              builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseMvc(routes =>
             {

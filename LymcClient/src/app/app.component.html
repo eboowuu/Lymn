@@ -12,10 +12,15 @@
     <tbody>
       <tr *ngFor="let r of reservations; let i=index; ">
         <td>{{r.userName}}</td>
-        <td>{{r.reservedBoat.boatName}}</td>
+        <td *ngIf="r.reservedBoat">{{r.reservedBoat.boatName}}</td>
+        <td *ngIf="!r.reservedBoat"></td>
         <td>{{r.startDate}}</td>
         <td>{{r.endDate}}</td>
       </tr>
     </tbody>
   </table>
+  <nav>
+    <a routerLink="/add">Add Reservation</a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

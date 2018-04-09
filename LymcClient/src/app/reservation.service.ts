@@ -8,7 +8,8 @@ import { Reservation } from './reservation'
 @Injectable()
 export class ReservationService {
 
-  private BASE_URL = "https://localhost:44368/api/ReservationsApi";
+  private BASE_URL = "https://wunesvaderaniassignment02.azurewebsites.net/api/ReservationsApi";
+  private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
 
@@ -16,6 +17,19 @@ export class ReservationService {
     return this.http.get(this.BASE_URL)
       .toPromise()
       .then(response => response.json() as Reservation[])
+      .catch(this.handleError);
+  }
+
+  createReservation(newReservation: Reservation): Promise<Reservation> {
+
+    var test = JSON.stringify(newReservation);
+
+    console.log(test);
+
+    return this.http
+      .post(this.BASE_URL, JSON.stringify(newReservation), { headers: this.headers })
+      .toPromise()
+      .then(res => res.json().data)
       .catch(this.handleError);
   }
 

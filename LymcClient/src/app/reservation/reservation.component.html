@@ -1,3 +1,10 @@
-<p>
-  reservation works!
-</p>
+<div>
+
+  <p><label>UserName </label><input ng-required="true" [(ngModel)]="newReservation.userName" placeholder="UserName"></p>
+  <p><label>Boat ID</label><input ng-required="true" [(ngModel)]="newReservation.reservedBoat.boatId" placeholder="Boat Id"></p>
+  <p><label>StartDate</label><input ng-required="true" type="date" [(ngModel)]="newReservation.startDate" placeholder="Start Date"></p>
+  <p><label>EndDate </label><input ng-required="true" type="date" [(ngModel)]="newReservation.endDate" placeholder="End Date"></p>
+  <button (click)="add(newReservation);">
+    Add
+  </button>
+</div>

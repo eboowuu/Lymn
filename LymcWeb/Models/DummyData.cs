@@ -92,15 +92,34 @@ namespace LymcWeb.Models
             if (!_context.Reservations.Any())
             {
                 var boatToAdd = _context.Boats.FirstOrDefault();
-                _context.Reservations.Add(
+                _context.Reservations.AddRange( new List<Reservation>()
+                {
                     new Reservation()
                     {
                         UserName = "a",
                         ReservedBoat = boatToAdd,
                         StartDate = DateTime.Now,
                         EndDate = new DateTime(2018, 4, 30)
-                        
-                    });
+
+                    },
+
+                    new Reservation()
+                    {
+                        UserName = "m",
+                        ReservedBoat = boatToAdd,
+                        StartDate = new DateTime(2018, 6, 1),
+                        EndDate = new DateTime(2018, 6, 5)
+                    },
+
+                    new Reservation()
+                    {
+                        UserName = "m",
+                        ReservedBoat = boatToAdd,
+                        StartDate = new DateTime(2018, 7, 1),
+                        EndDate = new DateTime(2018, 7, 5)
+                    },
+
+                });
                 _context.SaveChanges();
             }
 

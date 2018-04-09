@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LymcWeb.Data;
 using LymcWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LymcWeb.Controllers
 {
@@ -86,11 +87,9 @@ namespace LymcWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> PostReservation([FromBody] Reservation reservation)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
+            reservation.ReservedBoat = _context.Boats.Find(reservation.ReservedBoat.BoatId);
+           
             _context.Reservations.Add(reservation);
             await _context.SaveChangesAsync();
 

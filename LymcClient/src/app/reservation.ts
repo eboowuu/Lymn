@@ -1,6 +1,8 @@
+import { Boat } from "./boat";
+
 export class Reservation {
-  UserName: string;
-  Boat: string;
-  StartDate: Date;
-  EndDate: Date;
+  userName: string;
+  reservedBoat: Boat;
+  startDate: Date;
+  endDate: Date;
 }

@@ -34,7 +34,7 @@
                     @if (User.IsInRole("Admin") || User.IsInRole("Member"))
                     {
                         <li><a asp-area="" asp-controller="Boats" asp-action="Index">Boats</a></li>
-                        <li><a href="http://localhost:4200/">Reservations</a></li>
+                        <li><a asp-area="" asp-controller="Reservation" asp-action="Index">Reservations</a></li>
                     }
                     @if (User.IsInRole("Admin"))
                     {

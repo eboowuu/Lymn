@@ -4,8 +4,8 @@ import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { FormsModule} from '@angular/forms'
-
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,13 @@ import { FormsModule} from '@angular/forms'
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'add',
+        component: ReservationComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
