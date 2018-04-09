@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Reservation } from '../reservation';
 import { ReservationService } from '../reservation.service';
 import { BoatService } from '../boat.service';
@@ -11,7 +12,7 @@ import { Boat } from '../boat';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor(private reservationService: ReservationService, private boatService: BoatService) {
+  constructor(private reservationService: ReservationService, private boatService: BoatService, private route: Router) {
     this.newReservation = new Reservation();
     this.newReservation.reservedBoat = new Boat();
   }
@@ -24,6 +25,8 @@ export class ReservationComponent implements OnInit {
 
     if (!newReservation) { return; }
     this.reservationService.createReservation(newReservation);
+
+    location.reload();
   }
 
 

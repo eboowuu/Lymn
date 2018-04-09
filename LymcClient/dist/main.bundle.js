@@ -117,7 +117,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_router__["a" /* RouterModule */].forRoot([
+                __WEBPACK_IMPORTED_MODULE_6__angular_router__["b" /* RouterModule */].forRoot([
                     {
                         path: 'add',
                         component: __WEBPACK_IMPORTED_MODULE_4__reservation_reservation_component__["a" /* ReservationComponent */]
@@ -293,10 +293,11 @@ module.exports = "<div>\r\n\r\n  <p><label>UserName </label><input ng-required=\
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReservationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reservation__ = __webpack_require__("./src/app/reservation.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservation_service__ = __webpack_require__("./src/app/reservation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__boat_service__ = __webpack_require__("./src/app/boat.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__boat__ = __webpack_require__("./src/app/boat.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservation__ = __webpack_require__("./src/app/reservation.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reservation_service__ = __webpack_require__("./src/app/reservation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__boat_service__ = __webpack_require__("./src/app/boat.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__boat__ = __webpack_require__("./src/app/boat.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -311,12 +312,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ReservationComponent = /** @class */ (function () {
-    function ReservationComponent(reservationService, boatService) {
+    function ReservationComponent(reservationService, boatService, route) {
         this.reservationService = reservationService;
         this.boatService = boatService;
-        this.newReservation = new __WEBPACK_IMPORTED_MODULE_1__reservation__["a" /* Reservation */]();
-        this.newReservation.reservedBoat = new __WEBPACK_IMPORTED_MODULE_4__boat__["a" /* Boat */]();
+        this.route = route;
+        this.newReservation = new __WEBPACK_IMPORTED_MODULE_2__reservation__["a" /* Reservation */]();
+        this.newReservation.reservedBoat = new __WEBPACK_IMPORTED_MODULE_5__boat__["a" /* Boat */]();
     }
     ReservationComponent.prototype.add = function (newReservation) {
         newReservation.userName = newReservation.userName.trim();
@@ -324,6 +327,7 @@ var ReservationComponent = /** @class */ (function () {
             return;
         }
         this.reservationService.createReservation(newReservation);
+        location.reload();
     };
     ReservationComponent.prototype.getBoats = function () {
         var _this = this;
@@ -339,7 +343,7 @@ var ReservationComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/reservation/reservation.component.html"),
             styles: [__webpack_require__("./src/app/reservation/reservation.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__reservation_service__["a" /* ReservationService */], __WEBPACK_IMPORTED_MODULE_3__boat_service__["a" /* BoatService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__reservation_service__["a" /* ReservationService */], __WEBPACK_IMPORTED_MODULE_4__boat_service__["a" /* BoatService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], ReservationComponent);
     return ReservationComponent;
 }());
